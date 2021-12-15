@@ -1,0 +1,28 @@
+name: Docker Nginx-hello CI
+
+#on:
+  #push:
+    #branches: [ main ]
+  #pull_request:
+    #branches: [ main ]
+
+on:
+  pull_request:
+  
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: clone git repo
+      run: git clone https://github.com/igorbarnovsky/barnilla-action.git
+    
+    - name: Go to folder with Dockerfile
+      run: cd /barnilla-action/nginx/
+      
+    - name: Build the Docker image
+      run: docker build . -t my-image-name:$(date +%s)
+
