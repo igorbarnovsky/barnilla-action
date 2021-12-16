@@ -28,5 +28,5 @@ jobs:
       run: pwd   
       
     - name: Build the Docker image
-      run: docker build . -t ${{ github.event.inputs.name }}:$(date +%s)
+      run: docker build -f /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/Dockerfile . -t ${{ github.event.inputs.name }}:$(date +%s)
 
