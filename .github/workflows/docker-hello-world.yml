@@ -29,8 +29,8 @@ jobs:
       
     - name: Build the Docker image
       run: |
-      cd /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/
-      docker build . -t ${{ github.event.inputs.name }}:$(date +%s)
+        cd /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/
+        docker build . -t ${{ github.event.inputs.name }}:$(date +%s)
 
 #      working-directory: /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/ 
 
