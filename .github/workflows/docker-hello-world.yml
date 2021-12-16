@@ -21,12 +21,13 @@ jobs:
     - name: where am I?
       run: pwd    
     
-    - name: Go to folder with Dockerfile
-      run: cd /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/
+#    - name: Go to folder with Dockerfile
+#      run: cd /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/
       
-    - name: where am I now?
-      run: pwd   
+#    - name: where am I now?
+#      run: pwd   
       
     - name: Build the Docker image
-      run: docker build -f /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/Dockerfile . -t ${{ github.event.inputs.name }}:$(date +%s)
+      working-directory: /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/ 
+      run: docker build . -t ${{ github.event.inputs.name }}:$(date +%s)
 
