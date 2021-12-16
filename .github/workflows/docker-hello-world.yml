@@ -1,11 +1,12 @@
 name: Docker Nginx-hello CI
 
-on: workflow_dispatch
-      inputs:
-        name:
-          description: 'Choose image for building'
-          required: true
-          default: 'nginx-world' 
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Choose image for building'
+        required: true
+        default: 'nginx-world' 
 
 jobs:
 
