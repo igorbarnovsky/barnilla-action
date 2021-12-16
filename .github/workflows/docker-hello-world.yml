@@ -22,7 +22,7 @@ jobs:
       run: pwd    
     
     - name: Go to folder with Dockerfile
-      run: cd /${{ github.event.inputs.name }}/
+      run: cd /$GITHUB_WORKSPACE/barnilla-action/${{ github.event.inputs.name }}/
       
     - name: Build the Docker image
       run: docker build . -t ${{ github.event.inputs.name }}:$(date +%s)
