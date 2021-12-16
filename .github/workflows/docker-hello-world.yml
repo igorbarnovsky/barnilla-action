@@ -1,7 +1,11 @@
 name: Docker Nginx-hello CI
 
 on: workflow_dispatch
-  
+      inputs:
+        name:
+          description: 'Choose image for building'
+          required: true
+          default: 'nginx-world' 
 
 jobs:
 
@@ -14,8 +18,8 @@ jobs:
       run: git clone https://github.com/igorbarnovsky/barnilla-action.git
     
     - name: Go to folder with Dockerfile
-      run: cd $GITHUB_WORKSPACE/nginx/
+      run: cd $GITHUB_WORKSPACE/${{ github.event.inputs.name }}/
       
     - name: Build the Docker image
-      run: docker build . -t nginx-hello:$(date +%s)
+      run: docker build . -t ${{ github.event.inputs.name }}:$(date +%s)
 
