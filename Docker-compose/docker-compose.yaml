@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  nginx_world:
+    build:
+      context: /mnt/c/github/nginx-world
+    image: nginx:world
+    container_name: nginx_world
+    ports:
+      - "8080:80"
+  nginx_universal:
+    build:
+      context: /mnt/c/github/nginx-universe
+    image: nginx:universal
+    container_name: nginx_universal
+    ports:
+      - "80:80"
