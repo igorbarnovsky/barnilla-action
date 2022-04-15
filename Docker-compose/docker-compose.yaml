@@ -6,11 +6,18 @@ services:
     image: nginx:world
     container_name: nginx_world
     ports:
+      - "80:80"
+  nginx_galaxy:
+    build:
+      context: /mnt/c/github/nginx-galaxy
+    image: nginx:galaxy
+    container_name: nginx_galaxy
+    ports:
       - "8080:80"
-  nginx_universal:
+  nginx_universe:
     build:
       context: /mnt/c/github/nginx-universe
-    image: nginx:universal
-    container_name: nginx_universal
+    image: nginx:universe
+    container_name: nginx_universe
     ports:
-      - "80:80"
+      - "8081:80"
