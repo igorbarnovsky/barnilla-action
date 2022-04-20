@@ -1,6 +1,7 @@
-# barnilla-action
+# Hello world!
+# Docker, Docker-compose, Kubernetes
 
-Some way to deploy "Hello world!"
+Some ways to deploy "Hello world!"
 
 Hello world created by html and run in simple docker-container, based on nginx:latest image.
 
