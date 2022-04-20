@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-world
+  labels:
+    app: nginx-world
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: nginx-world
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-world
+  labels:
+    app: nginx-world
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-world
+  template:
+    metadata:
+      labels:
+        app: nginx-world
+        tier: nginx
+    spec:
+      containers:
+        - name: nginx-world
+          image: nginx:world
+          ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP

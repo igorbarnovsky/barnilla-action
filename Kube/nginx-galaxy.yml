@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-galaxy
+  labels:
+    app: nginx-galaxy
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: nginx-galaxy
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-galaxy
+  labels:
+    app: nginx-galaxy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-galaxy
+  template:
+    metadata:
+      labels:
+        app: nginx-galaxy
+        tier: nginx
+    spec:
+      containers:
+        - name: nginx-galaxy
+          image: nginx:galaxy
+          ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP

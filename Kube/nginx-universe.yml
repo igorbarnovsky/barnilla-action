@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-universe
+  labels:
+    app: nginx-universe
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: nginx-universe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-universe
+  labels:
+    app: nginx-universe
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-universe
+  template:
+    metadata:
+      labels:
+        app: nginx-universe
+        tier: nginx
+    spec:
+      containers:
+        - name: nginx-universe
+          image: nginx:universe
+          ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
