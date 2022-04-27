@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-world
+  name: nginx-{{ .Release.Name }}
   labels:
-    app: nginx-world
+    app: nginx-{{ .Release.Name }}
 spec:
   type: LoadBalancer
   selector:
-    app: nginx-world
+    app: nginx-{{ .Release.Name }}
   ports:
-    - name: nginx-world-listener
+    - name: nginx-{{ .Release.Name }}-listener
       protocol: TCP
       port: 80
       targetPort: 80
@@ -17,23 +17,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-world
+  name: deploy-nginx-{{ .Release.Name }}
   labels:
-    app: nginx-world
+    app: nginx-{{ .Release.Name }}
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: nginx-world
+      app: nginx-{{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: nginx-world
+        app: nginx-{{ .Release.Name }}
         tier: nginx
     spec:
       containers:
-        - name: nginx-world
-          image: nginx:world
+        - name: nginx-{{ .Release.Name }}
+          image: {{ .Values.container.image }}
           ports:
           - name: http
             containerPort: 80

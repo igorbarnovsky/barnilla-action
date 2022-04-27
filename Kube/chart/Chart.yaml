@@ -1,0 +1,6 @@
+apiVersion: v2
+name: nginx-world-chart
+description: chart for nginx hello world
+Type: application
+version: 0.1.0
+appVersion: "world"
